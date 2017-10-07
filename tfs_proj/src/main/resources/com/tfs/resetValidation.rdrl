@@ -1,0 +1,12 @@
+package com.tfs;
+
+import java.lang.Number;
+
+rule "resetValidation"
+	dialect "mvel"
+	ruleflow-group "resetValidationGroup"
+	when
+		error : ValidationError( )
+	then
+		retract( error );
+end

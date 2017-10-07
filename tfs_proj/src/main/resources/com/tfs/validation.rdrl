@@ -1,0 +1,15 @@
+package com.tfs;
+
+import java.lang.Number;
+
+rule "validation"
+	dialect "java"
+	ruleflow-group "validation_group"
+	when
+		Journey( startTime == "" )
+	then
+		System.out.println("yay");
+		ValidationError fact0 = new ValidationError();
+		fact0.setCause( "start time is blank" );
+		insert( fact0 );
+end
